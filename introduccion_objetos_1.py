@@ -30,7 +30,6 @@ la clase. Como en el caso de las funciones, si la primera línea del cuerpo se
 trata de una cadena de texto, esta será la cadena de documentación de la clase 
 o docstring.
 """
-
 # Declaración de una clase vacía con Docstring
 class ClaseVacia:
     """Esta es una clase vacia sin atributos ni métodos.
@@ -44,24 +43,44 @@ e instanciación. Veremos a que nos referimos con esto, pero primero creemos una
 clase no vacía con un método y un atributo.
 """
 # Creamos una clase sencilla
-class MiPrimeraClase:
-    """Un ejemplo sencillo de clase sin constructor.
+class Bicicleta:
+    """Un ejemplo de clase Bicicleta.
     """
-    i = 12345
+    def __init__(self, dueño, color, radio=2):
+        self.color = color
+        self.dueño = dueño
+        self.perimetro = radio * 2 * 3.1416
+    
+    def frenar(self):
+        print("La bicleta frena")
 
-    def f(self):
-        return "Hello world"
+    def subir_piñon(self, n_piñones):
+        print(f"Subimos {n_piñones} piñones")
+        return n_piñones
+
+    def bajar_piñon(self):
+        print("Bajar piñon")
 
 # Vamos a INSTANCIAR la clase y de esta manera crear un objeto asignado a una variable
-x = MiPrimeraClase()
+bicleta_dani = Bicicleta("Dani", "amarillo")
+bicleta_vicente = Bicicleta("Vicente", "rojo")
 
-# Acceso a el atributo
-atributo = x.i
-print(atributo)
+# Usar métodos de la bicicleta
+bicleta_dani.bajar_piñon()
+bicleta_dani.subir_piñon(2)
+bicleta_dani.frenar()
 
-# LLamada al método
-return_metodo = x.f()
-print(return_metodo)
+# Acceso a los atributos
+print(bicleta_dani.dueño)
+print(bicleta_dani.color)
+
+print(bicleta_vicente.dueño)
+print(bicleta_vicente.color)
+
+bicleta_dani.color = "blanco"
+
+print(bicleta_dani.dueño)
+print(bicleta_dani.color)
 
 """
 La instanciación de clases usa la notación de funciones. Date cuenta de 
@@ -73,11 +92,6 @@ real, una manifestación una instancia usable de esa clase.
 
 A partir de una clase podemos crear tantos objetos como queramos mediante instancias.
 """
-# Creamos 4 objetos mediante instacias de las ClaseUno y asignamos a variables diferentes.
-y = MiPrimeraClase()
-z = MiPrimeraClase()
-v = MiPrimeraClase()
-w = MiPrimeraClase()
 
 """
 Muchas clases necesitan crear objetos con instancias en un estado inicial particular. Por
@@ -124,7 +138,7 @@ modificar el atributo.
 """
 del paloma
 del pepin
-del x, y, v, w
+del bicleta_dani, bicleta_vicente
  
 print("\n------------------------")
 
@@ -142,7 +156,7 @@ class Guitarra:
         print("Suena una hermosa melodia...")
         
     def romper_cuerda(self):
-        self.n_cuerdas = 5
+        self.n_cuerdas -= 1
         print("Plack!! Una cuerda menos...")
 
 guitarra_electrica = Guitarra("electrica", "gibson")
